@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+</head>
+<body>
+    <h1>Image Processing</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="photo">Choose a photo:</label>
+        <input type="file" name="photo" id="photo" accept=".png, .jpg, .jpeg, .gif" required>
+        <br>
+        <input type="submit" value="Process">
+    </form>
+
+
+    {% if photo %}
+        <h2>Uploaded Photo:</h2>
+
+        <h2>PSNR (Peak Signal-to-Noise Ratio): {{ psnr }}</h2>
+        <h2>Tỉ số nén: {{ compression_ratio }}</h2>
+        {% if original_image %}
+            <h2>Original Image:</h2>
+            <img src="{{ url_for('static', filename='images/' + original_image) }}" alt="Original Image" width="300">
+        {% endif %}
+
+        {% if quantized_image %}
+            <h2>Vector Quantized Image:</h2>
+            <img src="{{ url_for('static', filename='images/' + quantized_image) }}" alt="Quantized Image" width="300">
+        {% endif %}
+
+        {% if decoded_image %}
+            <h2>Decoded Image:</h2>
+            <img src="{{ url_for('static', filename='images/' + decoded_image) }}" alt="Decoded Image" width="300">
+        {% endif %}
+    {% endif %}
+
+
+</body>
+</html>
