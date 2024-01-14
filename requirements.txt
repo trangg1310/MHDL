@@ -1,0 +1,10 @@
+skimage 
+sklearn
+numpy
+matplotlib
+scipy
+flask 
+werkzeug
+imageio
+datetime
+PIL
